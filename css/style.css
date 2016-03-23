@@ -1,0 +1,49 @@
+/*--------------------------------------------------------------
+>>> TABLE OF CONTENTS:
+----------------------------------------------------------------
+1.0 Defaults
+2.0 Content
+3.0 Footer
+--------------------------------------------------------------*/
+body {
+  font-family: 'Open Sans', serif; }
+
+/*--------------------------------------------------------------
+  1.0 Defaults
+--------------------------------------------------------------*/
+html, body {
+  height: 100%; }
+
+*:focus {
+  outline: none; }
+
+.parent {
+  width: 100%;
+  height: 100%;
+  display: table; }
+  .parent > .child {
+    display: table-cell;
+    vertical-align: middle; }
+
+/*--------------------------------------------------------------
+	2.0 Content
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+  3.0 Footer
+--------------------------------------------------------------*/
+#footer {
+  text-align: center;
+  color: #C2CBD4;
+  font-size: 14px;
+  margin-top: 3em; }
+  #footer a {
+    color: #C2CBD4;
+    text-decoration: none;
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out; }
+    #footer a:hover {
+      color: #4A9FD5; }
+
+/*# sourceMappingURL=style.css.map */

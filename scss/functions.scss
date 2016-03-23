@@ -1,0 +1,3 @@
+@function darken($color, $percentage) {
+  @return mix(black, $color, $percentage);
+}
