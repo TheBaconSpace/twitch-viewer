@@ -1,6 +1,6 @@
-### Twitch Streamers
+### Twitch Viewer
 
-Displays a list of [Twitch.tv](https://www.twitch.tv/) users and show if they're currently streaming or not along with details of their stream.
+Displays a list of [Twitch.tv](https://www.twitch.tv/) users and if they're currently streaming or not along with details of their stream.
 
 <!-- ![preview](preview.jpg) -->
 
