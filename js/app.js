@@ -24,7 +24,7 @@
           status = "offline";
         } else if (data.stream === undefined){
           game = "Account Closed";
-          status = "account closed";
+          status = "offline";
         } else if (typeof data.stream === 'object'){
           game = data.stream.game;
           status = "online";
@@ -42,20 +42,20 @@
           var description = status === 'online' ? ': ' + data.status : "";
           var channelLink = data.url;
 
-          // Put together the content
-          var html = "<div>";
+          // Build the channel list content
+          var html = "<li class='" + status + "'>";
 
           html += "<img width='125' src='" + logo +  "'>";
-          html += status + " ";
 
           if(status !== 'account closed'){
+            html += status + " ";
             html += "<a href='" + channelLink + "' target='_blank'>" + name + "</a>" + " ";
           } else {
             html += name + " ";
           }
 
           html += game + " " + description;
-          html+=  "</div><hr>";
+          html+=  "<hr></li>";
 
           // Display the content
           $("#channels-list").append(html);
@@ -69,7 +69,43 @@
   }
 
   $(document).ready(function() {
+
     channelDetails();
+
+    // Get the channel types as arrays
+    var onlineChannels = document.getElementsByClassName('online');
+    var offlineChannels = document.getElementsByClassName('offline');
+
+    // Clicking 'online' removes all 'offline' channels
+    document.getElementById('online-sort').addEventListener('click', function(){
+      for(var j = 0; j < offlineChannels.length; j++){
+        offlineChannels[j].classList.add('filtered');
+      }
+      for(var i = 0; i < onlineChannels.length; i++){
+        onlineChannels[i].classList.remove('filtered');
+      }
+    });
+
+    // Clicking 'offline' removes all 'online' channels
+    document.getElementById('offline-sort').addEventListener('click', function(){
+      for(var j = 0; j < onlineChannels.length; j++){
+        onlineChannels[j].classList.add('filtered');
+      }
+      for(var i = 0; i < offlineChannels.length; i++){
+        offlineChannels[i].classList.remove('filtered');
+      }
+    });
+
+    // Clicking 'offline' removes all 'online' channels
+    document.getElementById('display-all').addEventListener('click', function(){
+      for(var j = 0; j < onlineChannels.length; j++){
+        onlineChannels[j].classList.remove('filtered');
+      }
+      for(var i = 0; i < offlineChannels.length; i++){
+        offlineChannels[i].classList.remove('filtered');
+      }
+    });
+
   });
 
 })(window);
