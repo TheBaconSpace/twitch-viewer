@@ -95,6 +95,9 @@ section {
   border-left: 1px solid #000;
   border-right: 1px solid #000;
   border-radius: 10px;
+  @include bp-small {
+    width: 375px;
+  }
 }
 
 li {

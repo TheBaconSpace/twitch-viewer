@@ -86,6 +86,9 @@ section {
   border-left: 1px solid #000;
   border-right: 1px solid #000;
   border-radius: 10px; }
+  @media only screen and (max-width: 40em) {
+    section {
+      width: 375px; } }
 
 li {
   display: block; }
