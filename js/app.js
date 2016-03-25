@@ -45,17 +45,25 @@
           // Build the channel list content
           var html = "<li class='" + status + "'>";
 
-          html += "<img width='125' src='" + logo +  "'>";
+          html+= "<div class='channel-wrap'>";
+          html += "<img width='75' src='" + logo +  "'>";
 
           if(status !== 'account closed'){
-            html += status + " ";
-            html += "<a href='" + channelLink + "' target='_blank'>" + name + "</a>" + " ";
+            html += "<span class='status'>" + status + "</span>";
+            html += "<a class='user-name' href='" + channelLink + "' target='_blank'>" + name + "</a>" + " ";
           } else {
             html += name + " ";
           }
 
-          html += game + " " + description;
-          html+=  "<hr></li>";
+          html+= "</div><!-- .channel-wrap -->";
+
+          if(status === 'online'){
+            html += "<a class='channel-name' href='" + channelLink + "' target='_blank' data-tooltip='" + description +"'>Channel: " + game +  "</a>";
+          } else {
+            html += "<a class='channel-name' href='" + channelLink + "' target='_blank'>Channel: " + game +  "</a>";
+          }
+
+          html+=  "</li>";
 
           // Display the content
           $("#channels-list").append(html);
@@ -70,7 +78,12 @@
 
   $(document).ready(function() {
 
+    // List the channels
     channelDetails();
+
+    /*
+     *  Here we're setting up the filters
+     */
 
     // Get the channel types as arrays
     var onlineChannels = document.getElementsByClassName('online');
@@ -78,6 +91,11 @@
 
     // Clicking 'online' removes all 'offline' channels
     document.getElementById('online-sort').addEventListener('click', function(){
+
+      document.getElementById('display-all').className = '';
+      document.getElementById('offline-sort').className = '';
+      document.getElementById('online-sort').className = 'active';
+
       for(var j = 0; j < offlineChannels.length; j++){
         offlineChannels[j].classList.add('filtered');
       }
@@ -88,6 +106,11 @@
 
     // Clicking 'offline' removes all 'online' channels
     document.getElementById('offline-sort').addEventListener('click', function(){
+
+      document.getElementById('display-all').className = '';
+      document.getElementById('offline-sort').className = 'active';
+      document.getElementById('online-sort').className = '';
+
       for(var j = 0; j < onlineChannels.length; j++){
         onlineChannels[j].classList.add('filtered');
       }
@@ -96,8 +119,13 @@
       }
     });
 
-    // Clicking 'offline' removes all 'online' channels
+    // Clicking 'all' displays all channels
     document.getElementById('display-all').addEventListener('click', function(){
+
+      document.getElementById('display-all').className = 'active';
+      document.getElementById('offline-sort').className = '';
+      document.getElementById('online-sort').className = '';
+
       for(var j = 0; j < onlineChannels.length; j++){
         onlineChannels[j].classList.remove('filtered');
       }
