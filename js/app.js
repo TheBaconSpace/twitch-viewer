@@ -1,6 +1,6 @@
 (function(window, undefined){
 
-  var channels = ["ungespielt", "kylelong75", "comster404", "LumpTV", "freecodecamp", "dreamleague", "gogcom"];
+  var channels = ["NateKh2", "TwitchPresents", "Twitch", "Bacon_Space", "BaconHawkJS"];
 
   function channelDetails(){
 
@@ -9,7 +9,7 @@
 
       // Check the API for each user/channel
       function apiLink(type, name){
-        return 'https://api.twitch.tv/kraken/' + type + '/' + name + '?callback=?';
+        return 'https://api.twitch.tv/kraken/' + type + '/' + name + '?callback=';
       }
 
       // Get the channel's status
