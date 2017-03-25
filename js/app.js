@@ -9,7 +9,7 @@
 
       // Check the API for each user/channel
       function apiLink(type, name){
-        return 'https://api.twitch.tv/kraken/' + type + '/' + name + '?client_id=ba5m54krq9n07wh8ra7ee5lb53vxaag';
+        return 'https://api.twitch.tv/kraken/' + type + '/' + name + '';
       }
 
       // Get the channel's status
